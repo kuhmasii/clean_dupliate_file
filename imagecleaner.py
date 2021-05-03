@@ -25,17 +25,18 @@ if __name__ == "__main__":
 def get_files(path, *args, **kwargs):
 
     try:
-        # If the path is not valid or just a mere word,
-        # it won't lead to the directory, thus the content
-        # won't be found, hence raising an error.
+        # If the path is valid.
         image_files = os.listdir(path)
 
     except FileNotFoundError:
-        print("Wrong path!, copy the absolute path of the folder here!.")
+        # If the path is not valid or just a mere word,
+        # it won't lead to the directory, thus the content
+        # won't be found, hence prevent raising an error.
+        print("Wrong path!, copy the absolute path of the folder here!")
 
         # using Quit() will stop the rest of the functions from excuting
         # this will prevent the codes from encountering many errors.
-        quit()
+        image_files = quit()
 
     return image_files
 
@@ -91,13 +92,14 @@ def get_duplicate_files(files, *args, **kwargs):
     # eg; John-doe-(2).txt, notice the hypen between the last
     # letter of doe and the integer, this was what we fixed in
     # get_duplicate_files function above.
+
     pattern = re.compile(
-        r"^[a-zA-Z0-9@:%_\+.~#?&//=-]+\-\([0-9]+\)\.[a-zA-Z]+$"
+        r"^[a-zA-Z0-9@:%_\+\[\],.~#?&()//'=-]+\-\([0-9]+\)\.[a-zA-Z0-9]+$"
     )
     # pattern2 deals with our problem of a file copy having only
     # Copy not any integer, Eg; John-doe--Copy.txt
     pattern_2 = re.compile(
-        r"^[a-zA-Z0-9@:%_\+.~#?&//=-]+[Copy]\.[a-zA-Z]+$"
+        r"^[a-zA-Z0-9@:%_\+\[\],.~#?&()//'=-]+[Copy]\.[a-zA-Z0-9]+$"
     )
 
     for search_files in files:
@@ -144,9 +146,9 @@ def delete_duplicate_files(files, path, proceed, *args, **kwargs):
         )
         if sure.lower() == "y":
             for delete_files in files:
-                time.sleep(2)
+                time.sleep(1.5)
                 print(
-                    f"Deleting file {delete_files}....\nPress ctrlC to break out"
+                    f"Deleting file {delete_files}....\tPress Ctrl+C to break out"
                 )
                 file_to_remove = os.path.join(
                     path, delete_files
@@ -166,16 +168,16 @@ def delete_duplicate_files(files, path, proceed, *args, **kwargs):
 
 
 if __name__ == "__main__":
-    deleted_files = delete_duplicate_files
-    (
+    deleted_files = delete_duplicate_files(
         duplicate_files,
-                path, 
-            proceed
+        path,
+        proceed
     )
 
 # print(files)
 # print(renamed_file)
 # print(duplicate_files)
 # print(proceed)
-# print(deleted_files)
-# C:\Users\OLAOYE\Pictures\isaiah
+print(deleted_files)
+
+
