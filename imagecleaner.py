@@ -124,7 +124,7 @@ def proceed_to_delete(files, *args, **kwargs):
     proceed_on = None
     if files:
         if len(files) == 1:
-            print(f"This is your duplicate file {files} ")
+            print(f"This is your duplicate file {files}")
         else:
             print(f"These are your duplicate files {files}")
         proceed_on = input("are you ready to delete?\n[y/n] ").strip(" ")
@@ -178,6 +178,4 @@ if __name__ == "__main__":
 # print(renamed_file)
 # print(duplicate_files)
 # print(proceed)
-print(deleted_files)
-
-
+# print(deleted_files)
