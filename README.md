@@ -1,4 +1,4 @@
-# clean_dupliate_file
+# clean_duplicate_file
 Automated script that cleans duplicate files on a system.
 
 6 diff functions that each has a specific tasks.
