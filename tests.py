@@ -64,7 +64,6 @@ class GetFileTestCase(unittest.TestCase):
 
 
 class ProceedTestCase(unittest.TestCase):
-    y
     """Testing for proceed to delete"""
 
     def test_file_not_avalible_to_proceed(self):
